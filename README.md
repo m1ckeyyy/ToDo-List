@@ -10,5 +10,7 @@ How to use:
 
 [17.11.2022]
 No local Storage available yet.
+
+
 [28.11.2022]
-Tasks loads from Local Storage. Bunch of errors fixed.
+DONE
