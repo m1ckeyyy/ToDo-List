@@ -8,9 +8,5 @@ How to use:
 - Edit task using ✏️
 - Set task as done using ✔️
 
-[17.11.2022]
-No local Storage available yet.
 
-
-[28.11.2022]
-DONE
+Preview: https://todolist-mikolaj.netlify.app/
