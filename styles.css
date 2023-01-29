@@ -2,9 +2,7 @@
   margin: 0;
   padding: 0;
 }
-/* body {
-	background-color: aliceblue;
-} */
+
 .content {
   margin: 0 auto;
   max-width: 500px;
@@ -16,12 +14,6 @@ header {
   margin-top: 50px;
   padding: 15px;
 }
-/* input {
-	width: 466px;
-	border: 2px solid black;
-	margin-top: 10px;
-	padding: 15px;
-} */
 h1 {
   margin-top: 10px;
   align-items: center;
@@ -50,14 +42,15 @@ button {
   background: none;
 }
 .todo-list {
-  /* background-color: lightcyan; */
   border: 2px solid black;
   margin-top: 10px;
   margin-bottom: 10000px;
   display: flex;
   justify-content: center;
 }
-
+.todo-list:empty {
+  border: none;
+}
 #todo-list {
 }
 .todo-item {
@@ -69,11 +62,7 @@ button {
   width: 450px;
 }
 
-.actions {
-  /* border: 2px solid yellowgreen; */
-}
 .todo-content {
-  /* border: 2px solid red; */
   display: flex;
   align-items: center;
 }
@@ -101,4 +90,13 @@ button {
 .done > input,
 .done {
   background-color: lightgreen;
+}
+#taskRatio {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px 15px;
+  position: absolute;
+  font-size: 16px;
+  left: 1%;
+  top: 50px;
 }
