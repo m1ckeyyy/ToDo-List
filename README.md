@@ -1,6 +1,6 @@
 # ToDo-List
 
-Simple ToDo List using Vanilla JS, CSS.
+Simple ToDo List using HTML/CSS/JS with LocalStorage.
 
 How to use:
 - Add task by typing in the name and press ➕ 
