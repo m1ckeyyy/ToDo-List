@@ -1,15 +1,18 @@
+//if class='list'=empty sectionborder=none
 const displayTodos = function () {
   const todoList = document.querySelector("#todo-list");
+  const taskRatio = document.querySelector("#taskRatio");
   todoList.innerHTML = "";
   todos.forEach((todo) => {
+    //display a todo
     const todoItem = document.createElement("div");
+    todoItem.classList.add("todo-item");
 
     const content = document.createElement("input");
     const actions = document.createElement("div");
     const editButton = document.createElement("button");
     const deleteButton = document.createElement("button");
     const completeButton = document.createElement("button");
-    todoItem.classList.add("todo-item");
 
     content.classList.add("todo-content");
     actions.classList.add("actions");
@@ -44,10 +47,9 @@ const displayTodos = function () {
       let end = todo.content.length;
       actions.parentNode.children[0].setSelectionRange(end, end);
       actions.parentNode.children[0].focus();
-
       todo.editMode
-        ? ((editButton.innerHTML = "✏️"), (todo.editMode = false), (completeButton.disabled=false))
-        : ((editButton.innerHTML = "💾"), (todo.editMode = true),(completeButton.disabled=true));
+        ? ((editButton.innerHTML = "✏️"), (todo.editMode = false))
+        : ((editButton.innerHTML = "💾"), (todo.editMode = true));
       content.toggleAttribute("readOnly");
       todo.content = content.value;
       localStorage.setItem("todos", JSON.stringify(todos));
@@ -62,14 +64,18 @@ const displayTodos = function () {
       localStorage.setItem("todos", JSON.stringify(todos));
       displayTodos();
     };
+
+    taskRatio.textContent = `Completed task ratio: ${
+      todoList.querySelectorAll("#todo-list > div.todo-item.done").length
+    }/${todoList.children.length}`;
   });
 };
 
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
-
+const taskInput = document.querySelector("#taskInput");
 const submitBtn = document.querySelector("#addTaskBtn");
-submitBtn.addEventListener("click", function (e) {
-  e.preventDefault();
+
+const submitTask = function (e) {
   const todo = {
     content: e.target.parentNode.children[0].value,
     done: false,
@@ -80,5 +86,13 @@ submitBtn.addEventListener("click", function (e) {
   //reset the form
   e.target.parentNode.children[0].value = "";
   displayTodos();
+};
+
+submitBtn.addEventListener("click", submitTask);
+taskInput.addEventListener("keypress", function (e) {
+  if (e.keyCode === 13) {
+    submitTask(e);
+  }
 });
+
 displayTodos();
